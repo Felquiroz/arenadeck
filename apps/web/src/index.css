@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --arcane-glow: #8b5cf6;
+    --cyber-glow: #22d3ee;
+  }
+  
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+    background-image: url('/arenadeck-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-xl;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.84) 0%, rgba(2, 6, 23, 0.9) 100%);
+  }
+  
+  .glass-card {
+    @apply bg-slate-900/50 backdrop-blur-sm border border-slate-700/30 rounded-lg transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply relative px-6 py-3 bg-arcane-600 hover:bg-arcane-500 text-white font-semibold rounded-lg 
+           transition-all duration-300 hover:shadow-glow-violet-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-arcane-400 focus:ring-offset-2 focus:ring-offset-slate-900;
+  }
+  
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-lg
+           border border-slate-600/50 hover:border-slate-500
+           transition-all duration-200;
+  }
+  
+  .btn-cyber {
+    @apply relative px-6 py-3 bg-transparent text-cyber-400 font-semibold rounded-lg
+           border border-cyber-500/50 hover:border-cyber-400
+           transition-all duration-300 hover:shadow-glow-cyan hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-cyber-400 focus:ring-offset-2 focus:ring-offset-slate-900;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-slate-800/60 border border-slate-700/50 rounded-lg
+           text-slate-100 placeholder-slate-500
+           focus:outline-none focus:border-arcane-500 focus:ring-1 focus:ring-arcane-500/50
+           transition-all duration-200;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-win {
+    @apply badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+  
+  .badge-lose {
+    @apply badge bg-rose-500/20 text-rose-400 border border-rose-500/30;
+  }
+  
+  .badge-draw {
+    @apply badge bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+  
+  .tournament-card {
+    @apply glass-card p-5 hover:scale-[1.02] hover:border-arcane-500/40 hover:shadow-glow-violet
+           cursor-pointer group;
+  }
+  
+  .tournament-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-sm font-medium;
+  }
+  
+  .points-pill {
+    @apply inline-flex items-center justify-center min-w-[3rem] px-2 py-0.5 
+           bg-gradient-to-r from-arcane-600 to-arcane-700 rounded-full text-white text-sm font-bold;
+  }
+  
+  .table-row {
+    @apply flex items-center justify-between p-4 border-b border-slate-700/30 last:border-0
+           hover:bg-slate-800/30 transition-colors;
+  }
+  
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 
+           hover:text-slate-100 hover:bg-slate-800/50 transition-all duration-200;
+  }
+  
+  .nav-link-active {
+    @apply text-arcane-400 bg-arcane-500/10 border-l-2 border-arcane-500;
+  }
+
+  .arena-overlay {
+    @apply fixed inset-0 -z-10;
+    background:
+      radial-gradient(circle at 50% 10%, rgba(14, 165, 233, 0.22), transparent 42%),
+      radial-gradient(circle at 85% 25%, rgba(168, 85, 247, 0.18), transparent 40%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.45) 0%, rgba(2, 6, 23, 0.8) 62%, rgba(2, 6, 23, 0.95) 100%);
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-arcane-400 to-cyber-400;
+  }
+  
+  .border-gradient {
+    border-image: linear-gradient(135deg, #8b5cf6, #22d3ee) 1;
+  }
+  
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.3) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+  }
+}
